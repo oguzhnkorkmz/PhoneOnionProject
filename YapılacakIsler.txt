@@ -1,0 +1,37 @@
+Onion Project
+
+Konu:Telefon
+
+Tablolar:
+Telefon,(ID,MarkaID,ModelID,ÝsletimSistemiID,Aciklama,Fiyat,Resim,CiftSim,Stok)
+Marka(MarkaID,MarkaAdi)
+Model(ModelID,ModelAdi,MarkaID)
+Sepet(SepetID,UyeID,TelefonID,Adet)
+ÝsletimSistemi(ÝþletimSistemiID,ÝþeltimSistemiAdi)
+
+-Kullanýlan teknolojiler
+ 1-Onion Katmanlý Mimari
+ 2-sql server
+ 3-Ef core
+ 4-Ms Identity
+ 5-Tamamý asenkron olarak yazýlacak
+ 6-Repository kullanimi
+ 7-DIP'e gore yazýlacak
+ 8-DTO VM kullanýmlarý
+ 9-AutoMapper kullanimi
+ 10-Kalýcý Silme yapýlmayacak
+ 11-Uyelik sistemi olacak 
+ 12-Admin telefonla ilgili CRUD iþlemlerini yapabilir
+ 13-Uye ise sepete ekleme sepetten çýkarma,sepeti görme guncelleme iþlemlerini yapabilir
+ 14-Uye olmayanlar sadece sitede gezebilir
+ 15 Generic Base Configuration
+ 16 Resim adlarý guid olmalý
+
+ 1-Serivisi kullanarak login ve regisiter iþlemlerini yapýnýz
+ 2-Arealerý login partial kullanýmýný login logout kýsýmnlarýný yazýnýz
+ 3-Model ve Isletim sistemi için servisleri yazýnýz
+ 4-Uye olmayanlar 
+ Telefon (resim,marka,model,adý,fiyat)
+ 5-Telefonlarýn detay sayfasýný oluþturunuz
+ 6-Admin Panel => Telefon => Listele
+ 7-Admin Panel =>Telefon Sil

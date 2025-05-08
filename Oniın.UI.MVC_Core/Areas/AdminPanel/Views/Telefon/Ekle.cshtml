@@ -1,0 +1,111 @@
+﻿@model Onion.UI.MVC_Core.Models.ViewModels.TelefonEklemeFormu_VM
+
+@{
+    ViewData["Title"] = "Telefon Ekleme";
+}
+
+
+<style>
+    body {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ekleme-container {
+        width: 100%;
+        max-width: 600px;
+        padding: 2rem;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+    }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+        }
+
+    .btn-secondary {
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="ekleme-container">
+                <h1>Ekle</h1>
+                <hr />
+                <form asp-action="Ekle" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- Marka Seçimi -->
+                    <div class="form-group">
+                        <label asp-for="Telefon.MarkaID" class="control-label"></label>
+                        <select asp-for="Telefon.MarkaID" asp-items="Model.Markalar" class="form-control" onchange="getModelData()"></select>
+                        <span asp-validation-for="Telefon.MarkaID" class="text-danger"></span>
+                    </div>
+
+                    <!-- Model Seçimi -->
+                    <div class="form-group">
+                        <label asp-for="Telefon.ModelID" class="control-label"></label>
+                        <select asp-for="Telefon.ModelID" asp-items="Model.Modeller" class="form-control"></select>
+                        <span asp-validation-for="Telefon.ModelID" class="text-danger"></span>
+                    </div>
+
+                    <!-- İşletim Sistemi Seçimi -->
+                    <div class="form-group">
+                        <label asp-for="Telefon.IsletimSistemiID" class="control-label"></label>
+                        <select asp-for="Telefon.IsletimSistemiID" asp-items="Model.IsletimSistemleri" class="form-control"></select>
+                        <span asp-validation-for="Telefon.IsletimSistemiID" class="text-danger"></span>
+                    </div>
+
+                    <!-- Fiyat Girişi -->
+                    <div class="form-group">
+                        <label asp-for="Telefon.Fiyat" class="control-label"></label>
+                        <input asp-for="Telefon.Fiyat" class="form-control" />
+                        <span asp-validation-for="Telefon.Fiyat" class="text-danger"></span>
+                    </div>
+
+                    <!-- Çift Sim Kontrolü -->
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Telefon.CiftSim" /> @Html.DisplayNameFor(model => model.Telefon.CiftSim)
+                        </label>
+                    </div>
+
+                    <!-- Resim Yükleme -->
+                    <div class="form-group">
+                        <label asp-for="Telefon.Resim" class="control-label"></label>
+                        <input asp-for="Telefon.Resim" class="form-control" />
+                        <span asp-validation-for="Telefon.Resim" class="text-danger"></span>
+                    </div>
+
+                    <!-- Açıklama -->
+                    <div class="form-group">
+                        <label asp-for="Telefon.Aciklama" class="control-label"></label>
+                        <textarea asp-for="Telefon.Aciklama" class="form-control" cols="60" rows="5"></textarea>
+                        <span asp-validation-for="Telefon.Aciklama" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit Butonu -->
+                    <div class="form-group">
+                        <input type="submit" value="Ekle" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

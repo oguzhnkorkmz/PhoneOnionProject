@@ -1,0 +1,24 @@
+﻿using Onion.CoreLayer.Abstracts;
+using Onion.CoreLayer.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Onion.CoreLayer.Models
+{
+    public class IsletimSistemi:IEntity
+    {
+        public int IsletimSistemiID { get; set; }
+        public string IsletimSistemiAdi { get; set; }
+
+        public DateTime EklenmeTarihi { get; set; }
+        public DateTime? GuncellemeTarihi { get; set; }
+        public DateTime? SilmeTarihi { get; set; }
+
+        public KayitDurumu KayitDurumu { get; set; }
+
+        public ICollection<Telefon>? Telefonlar { get; set; }
+    }
+}

@@ -1,0 +1,61 @@
+﻿@using Onion.ApplicationLayer.Models.VievModels.Telefon
+@model TelefonDetay_VM
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img src="~/TelefonResimleri/@Model.Resim" class="img-fluid w-100 h-100 object-fit-cover" alt="@Model.ModelAdi">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body p-4">
+                    <h2 class="card-title fw-bold text-primary">@Model.MarkaAdi @Model.ModelAdi</h2>
+                    <hr />
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Marka:</strong> <span>@Model.MarkaAdi</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Model:</strong> <span>@Model.ModelAdi</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>İşletim Sistemi:</strong> <span>@Model.IsletimSistemiAdi</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Fiyat:</strong> <span class="text-success fs-5 fw-semibold">@Model.Fiyat ₺</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Çift Sim:</strong>
+                            <span>
+                                @if (Model.CiftSim)
+                                {
+                                    <span class="badge bg-success">Var</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Yok</span>
+                                }
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Stok:</strong>
+                            <span class="badge @(Model.Stok > 0 ? "bg-primary" : "bg-secondary")">@Model.Stok Adet</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Açıklama</h5>
+                        <p class="text-muted">@Model.Aciklama</p>
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-area="UyePanel" asp-controller="Home" asp-action="SepeteEkle" asp-route-id="@Model.TelefonID" class="btn btn-success btn-lg">Sepete Ekle</a>
+                            </td>
+                        </tr>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@using Onion.ApplicationLayer.Models.VievModels.Sepet
+@model IEnumerable<SepetDetay_VM>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Sepetim</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center align-middle shadow-sm rounded-4 overflow-hidden">
+            <thead class="table-primary">
+                <tr>
+                    <th>Ürün</th>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Fiyat</th>
+                    <th>Adet</th>
+                    <th>Toplam Fiyat</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="sepet-row">
+                        <td class="p-3">
+                            <img src="~/TelefonResimleri/@item.Resim" class="rounded-3" style="width: 80px; height: 100px; object-fit: cover;" />
+                        </td>
+                        <td class="fw-bold">@item.MarkaAdi</td>
+                        <td>@item.ModelAdi</td>
+                        <td class="text-success fs-5 fw-semibold">@item.Fiyat ₺</td>
+                        <td>@item.Adet</td>
+                        <td class="text-primary fs-5 fw-bold">@item.ToplamFiyat ₺</td>
+                      
+                        <td>
+                            <form method="post" asp-area="UyePanel" asp-controller="Home" asp-action="SepettenSil">
+                                <input type="hidden" name="id" value="@item.SepetID" />
+                                <input type="submit" name="id" value="Sepetten Çıkar" onclick="return askForDelete()"  class="btn btn-danger btn-sm" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-end mt-4">
+        <a asp-action="AlisverisiTamamla" class="btn btn-success btn-lg px-4">Alışverişi Tamamla</a>
+    </div>
+</div>
+
+<style>
+    .sepet-row {
+        transition: all 0.3s ease-in-out;
+    }
+
+        .sepet-row:hover {
+            background-color: #f1f9ff;
+            transform: scale(1.02);
+        }
+</style>

@@ -1,0 +1,41 @@
+﻿
+
+@if (User.Identity.Name == null)
+{
+    <div class="navbar">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a asp-area="" asp-controller="Login" asp-action="Login" class="btn btn-primary">Login</a>
+            </li>
+            <li class="nav-item">
+                <a asp-area="" asp-controller="Login" asp-action="Register" class="btn btn-primary">Uye Ol</a>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+    <div class="navbar">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <b>HoşGeldiniz @User.Identity.Name</b>
+            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a asp-area="AdminPanel" asp-controller="Home" asp-action="Index" class="nav-link text-dark">Yönetim Paneli</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a asp-area="UyePanel" asp-controller="Home" asp-action="Index" class="nav-link text-dark">Sepetim</a>
+                </li>
+            }
+            <li class="nav-item">
+                <a asp-area="" asp-controller="Login" asp-action="LogOut" class="nav-link text-dark">Çıkış</a>
+            </li>
+        </ul>
+    </div>
+}
+

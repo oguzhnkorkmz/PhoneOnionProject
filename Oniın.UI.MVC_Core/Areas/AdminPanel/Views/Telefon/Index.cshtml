@@ -1,0 +1,40 @@
+﻿@using Onion.ApplicationLayer.Models.VievModels.Telefon
+
+@model IEnumerable<Telefon_VM>
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var telefon in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden card-hover-effect">
+                    <div class="ratio ratio-4x3">
+                        <img src="~/TelefonResimleri/@telefon.Resim" class="card-img-top img-fluid" alt="@telefon.ModelAdi">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-primary">@telefon.MarkaAdi @telefon.ModelAdi</h5>
+                        <p class="card-text text-success fs-5 fw-semibold">@telefon.Fiyat ₺</p>
+                        <a asp-action="Detay" asp-route-id="@telefon.TelefonID" class="btn btn-primary w-100">Detay</a>
+                        <form method="post" asp-action="Sil">
+                            <input type="hidden" value="@telefon.TelefonID" name="id"/>
+                            <input type="submit" value="Telefon Sil" onclick="return askForDelete()" class="btn btn-primary w-100" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<style>
+    .card-hover-effect {
+        transition: all 0.3s ease-in-out;
+    }
+
+        .card-hover-effect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+</style>
